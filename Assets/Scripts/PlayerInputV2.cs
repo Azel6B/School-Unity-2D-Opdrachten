@@ -43,5 +43,13 @@ public class PlayerInputV2 : MonoBehaviour
                 transform.localScale = new Vector3(1, 1, 1);
             }
         }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        print(collision);
     }
+    private void OnCollisionEnter(Collision collision)
+    {
+        
+    }
+}
 
