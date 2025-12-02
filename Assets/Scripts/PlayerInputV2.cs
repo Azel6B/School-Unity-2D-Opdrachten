@@ -26,7 +26,7 @@ public class PlayerInputV2 : MonoBehaviour
             {
                 print("ik heb A ingedrukt");
                 transform.position -= new Vector3(1, 0, 0) * Time.deltaTime * _speed;   
-            transform.rotation = Quaternion.Euler(0, 0, 0);
+            transform.rotation = Quaternion.Euler(0, 180, 0);
                 transform.localScale = new Vector3(1, 1, 1);
             }
             else if (Input.GetKey(KeyCode.S)) {
