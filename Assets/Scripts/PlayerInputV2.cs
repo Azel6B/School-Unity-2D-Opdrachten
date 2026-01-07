@@ -1,14 +1,16 @@
+using System;
 using UnityEngine;
 
 public class PlayerInputV2 : MonoBehaviour
 {
     [SerializeField] private float _speed = 5f;
     [SerializeField] private string _CoinTag = "Coin";
+    private int _score;
     private Animator _animator;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        _animator = GetComponent<Animator>();
+        //_animator = GetComponent<Animator>();
         if (_animator == null)
         {
             Debug.LogError("Animator Component not found on player");
@@ -58,9 +60,12 @@ public class PlayerInputV2 : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag(_CoinTag))
+        CoinValue coinValue;
+        if (collision.gameObject.CompareTag(_CoinTag) && collision.gameObject.TryGetComponent<CoinValue>(out coinValue))
         {
+            _score += coinValue.GetScoreWorth();
             Destroy(collision.gameObject);
+            print("Score: " + _score);
         }
     }
 }
